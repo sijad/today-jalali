@@ -11,18 +11,17 @@ import Cocoa
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
-	@IBOutlet weak var window: NSWindow!
+    @IBOutlet weak var window: NSWindow!
 
-	@IBOutlet var dateLabel: NSTextField!
+    @IBOutlet var dateLabel: NSTextField!
 
-	func applicationDidFinishLaunching(aNotification: NSNotification) {
-		if let date = Jalali.getCurrentDate() {
-			dateLabel.stringValue = date
-		}
-	}
+    func applicationDidFinishLaunching(aNotification: Notification) {
+        let date = Jalali.getCurrentDate()
+        dateLabel.stringValue = date
+    }
 
-	func applicationWillTerminate(aNotification: NSNotification) {
-		// Insert code here to tear down your application
-	}
+    func applicationWillTerminate(aNotification: Notification) {
+        // Insert code here to tear down your application
+    }
 
 }

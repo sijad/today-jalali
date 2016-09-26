@@ -9,19 +9,17 @@
 import Foundation
 
 class Jalali {
-	static func getCurrentDate() -> String? {
-		if let calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierPersian) {
+    static func getCurrentDate() -> String {
+    let calendar = Calendar(identifier: Calendar.Identifier.persian)
 
-			let formatter = NSDateFormatter()
+    let formatter = DateFormatter()
 
-			formatter.calendar = calendar
+    formatter.calendar = calendar
 
-			formatter.locale = NSLocale(localeIdentifier: "fa_IR")
+    formatter.locale = Locale(identifier: "fa_IR")
 
-			formatter.dateFormat = "EEEE'،' dd MMMM YYYY"
+    formatter.dateFormat = "EEEE'،' dd MMMM YYYY"
 
-			return formatter.stringFromDate(NSDate())
-		}
-		return nil
-	}
+    return formatter.string(from: Date())
+    }
 }

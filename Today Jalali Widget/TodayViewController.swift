@@ -11,26 +11,27 @@ import NotificationCenter
 
 class TodayViewController: NSViewController, NCWidgetProviding {
 
-	@IBOutlet var dateText: NSTextField!
+    @IBOutlet var dateText: NSTextField!
 
     override var nibName: String? {
         return "TodayViewController"
     }
 
-	var jdate: String!
+    var jdate: String? = nil
 
-    func widgetPerformUpdateWithCompletionHandler(completionHandler: ((NCUpdateResult) -> Void)!) {
-		if let newDate = Jalali.getCurrentDate() where newDate != jdate {
-			jdate = newDate
-			dateText.stringValue = jdate
-			completionHandler(.NewData)
-		} else {
-			completionHandler(.NoData)
-		}
+    func widgetPerformUpdate(completionHandler: ((NCUpdateResult) -> Void)) {
+        let newDate = Jalali.getCurrentDate()
+        if newDate != jdate {
+            jdate = newDate
+            dateText.stringValue = newDate
+            completionHandler(.newData)
+        } else {
+            completionHandler(.noData)
+        }
     }
 
-	func widgetMarginInsetsForProposedMarginInsets(defaultMarginInset: NSEdgeInsets) -> NSEdgeInsets {
-		return NSEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-	}
+    func widgetMarginInsets(forProposedMarginInsets defaultMarginInset: EdgeInsets) -> EdgeInsets {
+        return EdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    }
 
 }
