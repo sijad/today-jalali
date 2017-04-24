@@ -19,7 +19,7 @@ class TodayViewController: NSViewController, NCWidgetProviding {
 
     var jdate: String? = nil
 
-    func widgetPerformUpdate(completionHandler: ((NCUpdateResult) -> Void)) {
+    func widgetPerformUpdate(completionHandler: (@escaping (NCUpdateResult) -> Void)) {
         let newDate = Jalali.getCurrentDate()
         if newDate != jdate {
             jdate = newDate

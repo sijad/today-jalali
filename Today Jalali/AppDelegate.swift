@@ -12,16 +12,14 @@ import Cocoa
 class AppDelegate: NSObject, NSApplicationDelegate {
 
     @IBOutlet weak var window: NSWindow!
-
-    @IBOutlet var dateLabel: NSTextField!
-
-    func applicationDidFinishLaunching(aNotification: Notification) {
+    @IBOutlet weak var dateLabel: NSTextField!
+    
+    func applicationDidFinishLaunching(_ aNotification: Notification) {
         let date = Jalali.getCurrentDate()
         dateLabel.stringValue = date
     }
-
-    func applicationWillTerminate(aNotification: Notification) {
+    
+    func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
     }
-
 }
